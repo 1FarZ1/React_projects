@@ -2,22 +2,24 @@ import { useEffect, useState } from 'react'
 import data from './data.ts'
 import './index.css'
 
+const allCategories = ['all', ...new Set(data.map((elm) => elm.category))];
+
 function App() {
   const [items,setItems] = useState(data);
-  const [category,setCategory] = useState<any[]>([]);
+  const [category,setCategory] = useState(allCategories);
 
 
-  useEffect(()=>{
-    
-    const allCategory:unknown[]=[];
-    allCategory.push('all');
-    items.forEach((elm)=>{
-      if(!allCategory.includes(elm.category)){
-        allCategory.push(elm.category);
-      }
-    });
-    setCategory(allCategory);
-  },[])
+  const handleClick = (filter:any) =>{
+    if(filter == "all"){
+      setItems(data);
+      return 
+    }
+
+      const newItems = data.filter((elm)=>elm.category ===filter);
+      setItems(newItems);
+  }
+
+
   return (
     <main>
         <section className='menu section'>
@@ -30,7 +32,9 @@ function App() {
                 category.map((elm,index)=>{
                   return <div key={index}>
                    
-                      <button className='btn'>
+                      <button onClick={()=>{
+                        handleClick(elm)
+                      }} className='btn'>
                         {
                           elm
                         }
