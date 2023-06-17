@@ -23,7 +23,7 @@ function App() {
           </header>
  
           {
-                 shown &&          <p>{elm.info}</p>
+                 shown &&  <p>{elm.info}</p>
             
           }
    
