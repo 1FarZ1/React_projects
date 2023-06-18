@@ -28,9 +28,8 @@ function App() {
           <section className='jobs-center'>
             {
               data.length === 0 ? 
-              <div className='loading'>
-                
-              </div>
+              <div className='loading'/>
+            
                : 
 
             <>
