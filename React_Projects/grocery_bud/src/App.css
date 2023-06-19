@@ -285,6 +285,7 @@ form h4 {
 }
 .form-input {
   border-radius: 0;
+  color:black;
   border-top-left-radius: var(--borderRadius);
   border-bottom-left-radius: var(--borderRadius);
 }

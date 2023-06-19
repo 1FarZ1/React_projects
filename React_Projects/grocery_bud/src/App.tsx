@@ -9,9 +9,8 @@ type item =  {
 
 const getLocalStorage = () => {
   const isExist = localStorage.getItem('list');
-  let list 
   if(isExist){
-     list = JSON.parse(isExist);
+     const list = JSON.parse(isExist);
   }
 
   };
@@ -26,6 +25,8 @@ const defaultList = JSON.parse(localStorage.getItem('list') || '[]');
 export default function App() {
   const [items,setItems]= useState<item[]>(defaultList);
   const [text,setText] = useState<string>("");
+  const [edit,setEdit] = useState<boolean>(false);
+  const [editId,setEditId] = useState<number>(0);
   const handleSubmit = (e:any)=>{
     e.preventDefault()
 
@@ -36,6 +37,7 @@ export default function App() {
     const newList = [...items,newItem];
     setItems(newList)
     setLocalStorage(newList);
+    setText("")
 
   }
 
@@ -47,13 +49,49 @@ export default function App() {
     )
     setItems(newItems);
     setLocalStorage(newItems);
+    
+  }
+
+  const handleEdit = (e:any )=>{
+    e.preventDefault();
+    const newItems= items.map((elm)=>{
+      if(elm.id == editId){
+        const newElm = {...elm,text:text};
+        return newElm;
+      }
+      return elm;
+    
+    })
+    setItems(newItems);
+    setLocalStorage(newItems);
+    setText("");
+    setEdit(false);
+    setEditId(0);
   }
 
 
   return (
 <main>
 <section className="section-center">
-   <form onSubmit={handleSubmit}>
+  {
+    edit ? 
+    <>
+      <form onSubmit={handleEdit}>
+   <h4>
+      EditItem
+    </h4>
+     <div className='form-control'>
+     <input  className='form-input' type="text"  value={text} onChange={(e)=>setText(e.target.value)} />
+     <button type='submit' className='btn'>
+       Edit item
+     </button>
+
+     </div>
+    </form> 
+
+    </>
+     : <>
+     <form onSubmit={handleSubmit}>
    <h4>
       Grocery bud
     </h4>
@@ -80,13 +118,21 @@ export default function App() {
               }} className='btn remove-btn'>
        remove items
      </button>
+              <button onClick={(e)=>{
+                setText(elm.text);
+                setEdit(true);
+                setEditId(elm.id);
+              }} className='btn remove-btn'>
+       edit item
+     </button>
             </div>
           })
         }
       </div>
     }
     
-
+</>
+  }
 
     </section>
 </main>
