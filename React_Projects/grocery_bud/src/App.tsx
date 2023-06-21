@@ -7,13 +7,12 @@ type item =  {
   text:string
 }
 
-const getLocalStorage = () => {
-  const isExist = localStorage.getItem('list');
-  if(isExist){
-     const list = JSON.parse(isExist);
-  }
-
-  };
+// const getLocalStorage = () => {
+//   const isExist = localStorage.getItem('list');
+//   if(isExist){
+//      const list = JSON.parse(isExist);
+//   }
+//   };
 
 
 const setLocalStorage = (items:item[]) => {
@@ -78,12 +77,12 @@ export default function App() {
     <>
       <form onSubmit={handleEdit}>
    <h4>
-      EditItem
+      Edit Item
     </h4>
      <div className='form-control'>
      <input  className='form-input' type="text"  value={text} onChange={(e)=>setText(e.target.value)} />
      <button type='submit' className='btn'>
-       Edit item
+       Edit  item
      </button>
 
      </div>

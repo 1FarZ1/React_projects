@@ -5,7 +5,7 @@ import './App.css'
 
 // you can divide them into componenets , but for now im keeping it that way 
 function App() {
-  const [shown,setShown] = useState(false);
+  const [shown,setShown] = useState<boolean>(false);
 
  return (
   <main>
