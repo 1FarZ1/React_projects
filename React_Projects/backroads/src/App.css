@@ -70,6 +70,9 @@ img:not(.nav-logo) {
   width: 100%;
   display: block;
 }
+.nav-logo{
+  width: 40px;
+}
 
 h1,
 h2,

@@ -1,50 +1,41 @@
 import React from 'react'
-
+import {pageLinks,socialLinks} from "../data";
 export default function NavBar() {
   return (
 <nav className="navbar">
       <div className="nav-center">
         <div className="nav-header">
-          <img src="./images/logo.svg" className="nav-logo" alt="backroads" />
+          <img src="data:image/jpeg;base64,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" className="nav-logo" alt="backroads" />
           <button type="button" className="nav-toggle" id="nav-toggle">
             <i className="fas fa-bars"></i>
           </button>
         </div>
+       
         {/* <!-- left this comment on purpose --> */}
         <ul className="nav-links" id="nav-links">
-          <li>
-            <a href="#home" className="nav-link"> home </a>
-          </li>
+          {
+                pageLinks.map((elm)=>{
+                    return <li key={elm.id}>
+                                    <a href={elm.href} className="nav-link"> {elm.text} </a>
 
-          <li>
-            <a href="#about" className="nav-link"> about </a>
-          </li>
 
-          <li>
-            <a href="#services" className="nav-link"> services </a>
-          </li>
-
-          <li>
-            <a href="#tours" className="nav-link"> tours</a>
-          </li>
+                    </li>
+                })
+          }
         </ul>
 
         <ul className="nav-icons">
-          <li>
-            <a href="https://www.twitter.com" target="_blank" className="nav-icon"
-              ><i className="fab fa-facebook"></i
-            ></a>
-          </li>
-          <li>
-            <a href="https://www.twitter.com" target="_blank" className="nav-icon"
-              ><i className="fab fa-twitter"></i
-            ></a>
-          </li>
-          <li>
-            <a href="https://www.twitter.com" target="_blank" className="nav-icon"
-              ><i className="fab fa-squarespace"></i
-            ></a>
-          </li>
+         {
+            socialLinks.map((elm)=>{
+                return <li key={elm.id}>
+                                <a href={elm.href} className="nav-icon"target='_blank' rel='noreferrer'> <i>
+                                    {elm.icon}
+                                    </i> </a>
+
+
+                </li>
+            })
+         }
         </ul>
       </div>
     </nav>  )
