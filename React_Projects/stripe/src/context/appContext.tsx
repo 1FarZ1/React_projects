@@ -16,13 +16,19 @@ const AppContext =  React.createContext({
     closeSubmenu: () => {
         console.log("close SubMenu");
         
-    }
+    },
+    pageId: null,
+    setPageId: (value:any) =>{
+        console.log("new value");
+    },
 });
 
 
 const AppProvider = ({ children } : any) => {
     const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
     const [isSubmenuOpen, setIsSubmenuOpen] = React.useState(false);
+    const [pageId, setPageId] = React.useState(null);
+
 
     const openSidebar = () => {
         setIsSidebarOpen(true);
@@ -40,15 +46,21 @@ const AppProvider = ({ children } : any) => {
         setIsSubmenuOpen(false);
     }
 
+    const newPageId = (value:any)=>{
+        setPageId(value)
+    }
+
     
     return <AppContext.Provider value={
         {
-            isSidebarOpen,
-            isSubmenuOpen,
-            openSidebar,
-            closeSidebar,
-            openSubmenu,
-            closeSubmenu
+            isSidebarOpen: isSidebarOpen,
+            isSubmenuOpen: isSubmenuOpen,
+            openSidebar: openSidebar,
+            closeSidebar: closeSidebar,
+            openSubmenu: openSubmenu,
+            closeSubmenu: closeSubmenu,
+            pageId: pageId,
+            setPageId:newPageId ,
         }
     }>{children}</AppContext.Provider>;
     } 
