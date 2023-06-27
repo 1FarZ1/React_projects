@@ -3,5 +3,8 @@
 const cartActions = {
     INCREMENTE: 'INCREMENTE',
     DECREMENTE: 'DECREMENTE',
-    CLEAR_CART: 'CLEAR_CART',
+    REMOVE: "remove",
+    CLEAR_CART: 'reset',
 }
+
+export default cartActions

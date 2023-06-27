@@ -1,37 +1,52 @@
+import cartItems from '../data/data';
+import cartActions from './cartActions';
 
 
 const INITIAL_STATE = {
-    cart: [],
+    cart:cartItems ,
 }
 const cartReducer = (state: any, action: any) => {
     switch (action.type) {
-        case 'INCREMENTE':
+        case cartActions.INCREMENTE:            
             return {
                 ...state,
                 cart: state.cart.map((item: any) => {
                     if (item.id === action.payload) {
                         return {
                             ...item,
-                            quantity: item.quantity + 1
+                            amount: item.amount + 1
                         }
                     }
                     return item;
                 },
                 ),
             }
-        case 'Decremente':
+        case cartActions.DECREMENTE:
                 return {
                 ...state,
                 cart : state.cart.map((item:any)=>{
                     if(item.id == action.payload){
+                        if(item.amount == 0){
+                            return item;
+                        }
                         return {
                             ...item,
-                            quantity:item.quantity + 1
+                            amount:item.amount - 1
                         }
                     }
+                    return item;
                 })    
                 }
-        case 'reset':
+        case cartActions.REMOVE:
+            return {
+                ...state,
+                cart: state.cart.filter((item:any)=>{
+                    if(item.id != action.payload){
+                        return true
+                    }
+                })
+            }
+        case cartActions.CLEAR_CART:
             return {
                 ...state,
                 cart: []
@@ -41,4 +56,9 @@ const cartReducer = (state: any, action: any) => {
         default:
             return state;
     }
+}
+
+export {
+    cartReducer,
+    INITIAL_STATE
 }

@@ -1,9 +1,10 @@
+import { useContext } from 'react';
 import CartItem from './CartItem';
-import cartItems from '../data/data';
+import { cartContext } from '../context/cartContext';
 const CartContainer = () => {
-  const cartArray:item[] = [...cartItems];
+    const {cart,reset,cost }= useContext(cartContext);
 
-  if (cartArray.length === 0) {
+  if (cart.length === 0) {
     return (
       <section className='cart'>
         {/* cart header */}
@@ -22,7 +23,7 @@ const CartContainer = () => {
       </header>
       {/* cart items */}
       <div>
-        {cartArray.map((cartItem) => {
+        {cart.map((cartItem) => {
           return <CartItem key={cartItem.id} {...cartItem} />;
         })}
       </div>
@@ -31,12 +32,12 @@ const CartContainer = () => {
         <hr />
         <div>
           <h5 className='cart-total'>
-            total <span>$10</span>
+            total <span>$ {cost}</span>
           </h5>
         </div>
         <button
           className='btn btn-hipster'
-          onClick={() => console.log('clear cart')}
+          onClick={() =>reset()}
         >
           clear cart
         </button>

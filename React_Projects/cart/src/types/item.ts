@@ -1,6 +1,4 @@
 
-
-
 type item = {
     id: string,
     title: string,
