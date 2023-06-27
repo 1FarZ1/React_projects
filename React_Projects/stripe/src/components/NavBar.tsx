@@ -19,7 +19,7 @@ export function Navbar() {
         <div className='nav-links'>
       {
         sublinks.map((item)=>{
-          return <button className="nav-link" key={item.pageId}>
+          return <button onMouseEnter={()=>setPageId(item.pageId)}  className="nav-link" key={item.pageId}>
               {item.page}
              </button>
         })

@@ -1,0 +1,7 @@
+
+
+const cartActions = {
+    INCREMENTE: 'INCREMENTE',
+    DECREMENTE: 'DECREMENTE',
+    CLEAR_CART: 'CLEAR_CART',
+}
