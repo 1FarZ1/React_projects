@@ -41,11 +41,6 @@ function App() {
     </section>
 
     <List colors={colors}/>
-
-
-
-
-
   </main>
   )
 }

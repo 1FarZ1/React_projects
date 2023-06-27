@@ -3,9 +3,10 @@ import {useState} from 'react'
 import './App.css'
 
 
-// you can divide them into componenets , but for now im keeping it that way 
+
+// u can change them to seperate component to have indepandent state for each question
 function App() {
-  const [shown,setShown] = useState<boolean>(false);
+  const [shown,setShown] = useState<boolean[]>([false,false,false,false,false]);
 
  return (
   <main>
@@ -15,17 +16,21 @@ function App() {
         </h1>
 
        {
-        questions.map((elm)=>{
+        questions.map((elm,index)=>{
           return <div className='question' key={elm.id}>
           <header>
              <h5>{elm.title}</h5>
-             <button  onClick={()=>setShown(!shown)} className="question-btn">
+             <button  onClick={()=>{
+                const temp = [...shown];
+                temp[index] = !temp[index];
+                setShown(temp);
+             }} className="question-btn">
             <span className="plus-icon"/>
           </button>
           </header>
  
           {
-                 shown &&  <p>{elm.info}</p>
+                 shown[index] &&  <p>{elm.info}</p>
             
           }
    

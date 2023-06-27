@@ -30,13 +30,12 @@ export default function Footer() {
         </li>
         <li>
           <a href="https://www.twitter.com" target="_blank" className="footer-icon"
-            ><i className="fab fa-squarespace"></i
-          ></a>
+            ><i className="fab fa-squarespace"></i></a>
         </li>
       </ul>
       <p className="copyright">
         copyright &copy; Backroads travel tours company
-        <span id="date"></span> all rights reserved
+        <span id="date">{new Date().getFullYear()}</span> all rights reserved
       </p>
     </footer>
   )

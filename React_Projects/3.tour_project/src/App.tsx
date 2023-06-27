@@ -1,11 +1,15 @@
 import { useState } from 'react'
 
-
 function App() {
   
   return (
     <>
-      <h2>Tour Project Setup</h2> 
+      <h2>Tour Project </h2>
+      <div>
+        {
+          // <Tour />
+        }
+        </div> 
     </>
   )
 }
