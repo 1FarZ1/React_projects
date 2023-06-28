@@ -10,7 +10,7 @@ const cartReducer = (state: any, action: any) => {
         case cartActions.INCREMENTE:            
             return {
                 ...state,
-                cart: state.cart.map((item: any) => {
+                cart: state.cart.map((item: item) => {
                     if (item.id === action.payload) {
                         return {
                             ...item,
@@ -24,7 +24,7 @@ const cartReducer = (state: any, action: any) => {
         case cartActions.DECREMENTE:
                 return {
                 ...state,
-                cart : state.cart.map((item:any)=>{
+                cart : state.cart.map((item:item)=>{
                     if(item.id == action.payload){
                         if(item.amount == 0){
                             return item;
@@ -40,10 +40,9 @@ const cartReducer = (state: any, action: any) => {
         case cartActions.REMOVE:
             return {
                 ...state,
-                cart: state.cart.filter((item:any)=>{
-                    if(item.id != action.payload){
-                        return true
-                    }
+                cart: state.cart.filter((item:item)=>{
+                    return item.id !== action.payload
+                       
                 })
             }
         case cartActions.CLEAR_CART:
