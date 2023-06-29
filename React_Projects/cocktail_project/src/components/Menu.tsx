@@ -9,8 +9,9 @@ export default function Menu() {
     if(loading){
         return <Loading/>;
     }
+    
 
-    if (cocktails.length < 1) {
+    if (!cocktails) {
         return (
           <h2 className='section-title'>
             no cocktails matched your search criteria
@@ -22,7 +23,7 @@ export default function Menu() {
         <h2 className='section-title'>cocktails</h2>
         <div className='cocktails-center'>
           {cocktails.map((item:any) => {
-            return <Card key={item.id} {...item} />
+            return <Card key={item.idDrink} {...item} />
           })}
         </div>
       </section>

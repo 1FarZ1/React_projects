@@ -22,13 +22,13 @@ const AppProvider = ({ children }:any) => {
     const [searchTerm , setSearchTerm] = useState('a');
     const [cocktails,setCocktails] = useState([]);
 
-    const fetchData =async ()=>{
+    const fetchData = useCallback(async ()=>{
         setLoading(true);
         const res =  await axios.get(url + searchTerm);
         setCocktails(res.data.drinks);
         setLoading(false);
 
-    }
+    },[searchTerm]);
 
 
     useEffect(()=>{
