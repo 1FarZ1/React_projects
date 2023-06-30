@@ -1,13 +1,20 @@
 import React from 'react'
+
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 const ErrorPage = () => {
-  return <Wrapper>
-    
+  return <Wrapper className="page-100">
+    <section>
+        <h1>404</h1>
+        <h3>the page you tried to access cannot  be found</h3>
+        <Link to="/" className="btn">
+            Back home</Link>
+    </section>
   </Wrapper>
 }
 
 const Wrapper = styled.main`
+
   background: var(--clr-primary-10);
   display: flex;
   justify-content: center;

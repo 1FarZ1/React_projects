@@ -32,6 +32,9 @@ const Nav = () => {
                 </Link>
             }
             )}
+            <Link to={"/checkout"} key={"idk"}>
+                    Checkout    
+                </Link>    
         </ul>
         <CartButtons/>
         
