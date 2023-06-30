@@ -12,10 +12,6 @@ const AppContext = React.createContext({
 
 })
 
-// type Tdrink = {
-
-// }
-
 const AppProvider = ({ children }:any) => {
 
     const [loading , setLoading] = useState(false);
@@ -33,7 +29,7 @@ const AppProvider = ({ children }:any) => {
 
     useEffect(()=>{
         fetchData(); 
-    },[searchTerm])
+    },[searchTerm,fetchData])
   return <AppContext.Provider value={
     {
         loading: loading,
