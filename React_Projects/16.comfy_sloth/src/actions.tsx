@@ -1,7 +1,7 @@
 
 
 
-enum ActionType {
+export enum ActionType {
     OPEN_SIDEBAR = 'OPEN_SIDEBAR',
     CLOSE_SIDEBAR = 'CLOSE_SIDEBAR',
     GET_PRODUCTS_BEGIN = 'GET_PRODUCTS_BEGIN',
@@ -16,3 +16,5 @@ enum ActionType {
     SIDEBAR_OPEN = 'SIDEBAR_OPEN',
     SIDEBAR_CLOSE = 'SIDEBAR_CLOSE',
 }
+
+

@@ -64,8 +64,7 @@ body {
   color: var(--clr-grey-1);
   line-height: 1.5;
   font-size: 0.875rem;
-  width: 2000px;
-  height: 2000px;
+  width: 100%;
 }
 ul {
   list-style-type: none;
