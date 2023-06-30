@@ -21,6 +21,6 @@ export const CartProvider = ({ children }:any) => {
   )
 }
 // make sure use
-export const useCartContext = () => {
+export const useProductsContext = () => {
   return useContext(CartContext)
 }
