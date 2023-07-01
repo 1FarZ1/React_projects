@@ -50,7 +50,7 @@ export const ProductProvider = ({ children }:any) => {
             dispatch({type:ActionType.GET_PRODUCTS_SUCCESS,payload:res.data})
         }
        } catch (error) {
-        dispatch({type:ActionType.GET_FEATURED_PRODUCTS_ERROR,payload:error})
+        dispatch({type:ActionType.GET_PRODUCTS_ERROR,payload:error})
        }
     
     }
