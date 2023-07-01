@@ -1,15 +1,29 @@
 import React from 'react'
 import styled from 'styled-components'
 import PageHero from '../components/PageHero'
-// import { Filters, ProductList, Sort, PageHero } from '../components'
+import { useFilterContext } from '../context/filter_context'
+import Filters from '../components/Filters'
+import Sort from '../components/Sort'
+import GridView from '../components/GridView'
+import ListView from '../components/ListView'
+
 
 const ProductsPage = () => {
+    const {filtred_products} = useFilterContext();
+    const isGrid =false;
+
   return <main>
     <PageHero title="products"/>
-    <Wrapper className="page section section-center">
-        test
-        {/* <PageHero title="products" /> */}
-        {/* <div className="section-center products">*/}
+    <Wrapper className="page">
+        <div className="section-center products">
+        <Filters/>
+        <div>
+            <Sort/>
+            { isGrid  ? <GridView products={filtred_products}/> : <ListView products={filtred_products}/> }
+        </div>
+        </div>
+        <h1>products page</h1>
+       
         </Wrapper>   
   </main>
 }

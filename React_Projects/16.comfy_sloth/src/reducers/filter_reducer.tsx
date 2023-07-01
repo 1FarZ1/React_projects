@@ -1,5 +1,14 @@
 
+import { ActionType } from "../actions";
+
 export const filterReducer = (state: any, action: any) => {
-    return state
+    switch (action.type) {
+        case ActionType.LOAD_PRODUCTS:
+            return {
+                ...state,
+                filtred_products:[...action.payload],
+            }
+        default:
+            return state
     }
-    
+    }
