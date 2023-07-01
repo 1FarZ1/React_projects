@@ -10,7 +10,7 @@ import ListView from '../components/ListView'
 
 const ProductsPage = () => {
     const {filtred_products} = useFilterContext();
-    const isGrid =false;
+    const [isGrid,setIsGrid] = React.useState(false);
 
   return <main>
     <PageHero title="products"/>
@@ -18,7 +18,7 @@ const ProductsPage = () => {
         <div className="section-center products">
         <Filters/>
         <div>
-            <Sort/>
+            <Sort isGrid={isGrid} changeView={setIsGrid} filtred_products={filtred_products}/>
             { isGrid  ? <GridView products={filtred_products}/> : <ListView products={filtred_products}/> }
         </div>
         </div>
