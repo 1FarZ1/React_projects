@@ -2,21 +2,21 @@
 import React, { useEffect, useContext, useReducer } from 'react'
 import { Productreducer } from '../reducers/product_reducer';
 import { ActionType } from '../actions';
+import axios from 'axios';
+import { products_url } from '../utils/consts';
 
 
-// import reducer from '../reducers/cart_reducer'
-
-// import {
-//   ADD_TO_CART,
-//   REMOVE_CART_ITEM,
-//   TOGGLE_CART_ITEM_AMOUNT,
-//   CLEAR_CART,
-//   COUNT_CART_TOTALS,
-// } from '../actions'
 
 const initialState = 
 {
     isSideBarOpen:false,
+    products_loading:false,
+    products_error:false,
+    products:[],
+    featured_products:[],
+    single_product_loading:false,
+    single_product_error:false,
+    single_product:{}
 
 }
 
@@ -41,12 +41,29 @@ export const ProductProvider = ({ children }:any) => {
     const closeSideBar = ()=>{
         dispatch({type:ActionType.CLOSE_SIDEBAR})
     }
+
+    const getAllProducts = async ()=>{
+        dispatch({type:ActionType.GET_PRODUCTS_BEGIN})
+       try {
+        const res = await axios(products_url);
+        if(res.status == 200){
+            dispatch({type:ActionType.GET_PRODUCTS_SUCCESS,payload:res.data})
+        }
+       } catch (error) {
+        dispatch({type:ActionType.GET_FEATURED_PRODUCTS_ERROR,payload:error})
+       }
+    
+    }
+
+    useEffect(()=>{
+        getAllProducts();
+    },[])
   return (
     <CartContext.Provider value={
         {
             ...state,
             openSideBar,
-            closeSideBar
+            closeSideBar,
         }
     }>{children}</CartContext.Provider>
   )
