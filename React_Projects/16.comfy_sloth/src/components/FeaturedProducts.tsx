@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import Error from './Error'
 import Loading from './Loading'
+import { formatPrice } from '../utils/helper'
 
 
 
@@ -16,17 +17,16 @@ const FeaturedProducts = () => {
     </div>
     <div className="section-center featured">
         {
-            loading ? <Loading/> : error ? <Error/> : featured.map((product,index) => {
+            loading ? <Loading/> : error ? <Error/> : featured.slice(0,3).map((product,index) => {
                 const {id,name,image,price} = product
-              if(index <= 2){
                 return <article key={id}>
                 <Link to={`/products/${id}`}>
                     <img src={image} alt={name}/>
                 </Link>
                 <h4>{name}</h4>
-                <p>${price}</p>
+                <p>{formatPrice(price)}</p>
             </article>
-              }
+              
             }
             )}
     </div>
