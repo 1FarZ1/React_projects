@@ -6,8 +6,13 @@ import { ActionType } from '../actions'
 
 
 
+
+
+const checkStorage = ()=>{
+  return localStorage.getItem("cart")?JSON.parse(localStorage.getItem("cart")!):[]
+}
 const initialState = {
-  cart:[],
+  cart:checkStorage(),
   total_items:0,
   total_amount:0,
   shipping_fee:534,
@@ -20,6 +25,10 @@ const CartContext = React.createContext({
   total_amount:0,
   shipping_fee:534,
   addToCart:(id:any,color:any,amount:number,product:any)=>{},
+  removeFromCart:(id:any)=>{},
+  toggleAmount:(id:any,value:any)=>{},
+  clearCart:()=>{},
+
 })
 
 export const CartProvider = ({ children }:any) => {
@@ -28,15 +37,35 @@ export const CartProvider = ({ children }:any) => {
 
 
   const addToCart = (id:any,color:any,amount:number,product:any)=>{
-    console.log(id,color,amount);
-    console.log(product);
+   
     dispatch({type:ActionType.ADD_TO_CART,payload:{id,color,amount,product}});
   }
+
+  const removeFromCart = (id:any)=>{
+
+
+  }
+
+  const toggleAmount = (id:any,value:number)=>{
+  }
+
+  const clearCart = ()=>{
+  }
+
+
+  useEffect(()=>{
+    localStorage.setItem("cart",JSON.stringify(state.cart));
+  },[state.cart])
+
+
   return (
     <CartContext.Provider value={
       {
         ...state,
-        addToCart
+        addToCart,
+        removeFromCart,
+        toggleAmount,
+        clearCart,
 
       }   
     }>{children}</CartContext.Provider>
