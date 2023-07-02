@@ -47,6 +47,19 @@ export const filterReducer = (state: any, action: any) => {
                     [action.payload.name]:action.payload.value,
                 }
             }
+        case ActionType.CLEAR_FILTER:
+            return {
+                ...state,
+                filters:{
+                    ...state.filters,
+                    text:"",
+                    company:"all",
+                    category:"all",
+                    color:"all",
+                    price:state.filters.max_price,
+                    shipping:false,
+                }
+            }
         default:
             return state
     }

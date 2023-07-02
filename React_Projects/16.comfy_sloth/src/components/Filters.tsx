@@ -57,17 +57,25 @@ const Filters = () => {
                         }
                        </select>
                         </div>
-                        <div className="colors">
+                        <div className="form-control">
+                            <h5>
+                                colors
+                            </h5>
 
-                        {
-                            colors.map((item:any,index:any)=>{
-                                if(item === "all"){
-                                    return <button key={index} onClick={updateFilters} name="color" type="button" className={color === item ? "all-btn active" : "all-btn"}>{item}</button>
+
+                        
+                           <div className="colors">
+                            {
+                                 colors.map((item:any,index:any)=>{
+                                    if(item === "all"){
+                                        return <button key={index} onClick={updateFilters} data-color="all"  name="color" type="button" className={color === item ? "all-btn active" : "all-btn"}>{item}</button>
+                                    }
+                                    return <button key={index} onClick={updateFilters} name="color" data-color={item} type="button" className={color === item ? "color-btn active" : "color-btn"} style={{background:item}}>{color === item ? <FaCheck/> : null}</button>
                                 }
-                                return <button key={index} onClick={updateFilters} name="color" type="button" className={color === item ? "color-btn active" : "color-btn"} style={{background:item}}>{color === item ? <FaCheck/> : null}</button>
+                                )
                             }
-                            )
-                        }
+                           </div>
+                        
                         </div>
 
                         <div>
@@ -85,10 +93,14 @@ const Filters = () => {
                             <label htmlFor="shipping">free shipping</label>
                             <input type="checkbox" name="shipping" id="shipping" checked={shipping} onChange={updateFilters} />
                         </div>
+
+
                     
                        
                
     </form>
+    <button type="button" className="clear-btn" onClick={clearFilters}>clear filters</button>
+    
     </div>
     </Wrapper>
 }
