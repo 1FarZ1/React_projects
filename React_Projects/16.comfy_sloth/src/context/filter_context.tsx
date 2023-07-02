@@ -53,6 +53,10 @@ export const FilterProvider = ({ children }:any) => {
     }
 
     const updateFilters = (e:any)=>{
+        dispatch({type:ActionType.UPDATE_FILTERS,payload:{
+            name:e.target.name,
+            value:e.target.value
+        }});
 
     }
     const  clearFilters =()=>{
@@ -64,6 +68,9 @@ export const FilterProvider = ({ children }:any) => {
     useEffect(()=>{
         dispatch({type:ActionType.SORT_PRODUCTS,payload:state.sort});
     },[products,state.sort])
+    useEffect(()=>{
+        dispatch({type:ActionType.FILTER_PRODUCTS,payload:state.filters});
+    },[products,state.filters])
   return (
     <FilterContext.Provider value={
         {

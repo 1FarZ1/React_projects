@@ -22,7 +22,6 @@ const ProductsPage = () => {
             { isGrid  ? <GridView products={filtred_products}/> : <ListView products={filtred_products}/> }
         </div>
         </div>
-        <h1>products page</h1>
        
         </Wrapper>   
   </main>

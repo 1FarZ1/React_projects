@@ -39,6 +39,14 @@ export const filterReducer = (state: any, action: any) => {
                     }
                 }),
             }
+        case ActionType.UPDATE_FILTERS :
+            return {
+                ...state,
+                filters:{
+                    ...state.filters,
+                    [action.payload.name]:action.payload.value,
+                }
+            }
         default:
             return state
     }
