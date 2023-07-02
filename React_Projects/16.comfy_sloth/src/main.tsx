@@ -6,7 +6,6 @@ import { FilterProvider } from './context/filter_context.tsx'
 import { CartProvider } from './context/cart_context.tsx'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
     <ProductProvider>
       <FilterProvider>
         <CartProvider>
@@ -14,5 +13,4 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         </CartProvider>
       </FilterProvider>
     </ProductProvider>
-  </React.StrictMode>,
 )

@@ -65,6 +65,10 @@ export const cartReducer = (state: any, action: any) => {
                         if(elm.amount < 1){
                             elm.amount = 1;
                         }
+                        return {
+                            ...elm,
+                            amount:elm.amount
+                        }
                     }
                     return elm;
                 })

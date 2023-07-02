@@ -55,7 +55,7 @@ export const CartProvider = ({ children }:any) => {
   }
 
   const toggleAmount = (itemId:any,value:any)=>{
-    if(value == "inc"){
+    if(value === "inc"){
       dispatch({type:ActionType.TOGGLE_CART_ITEM_AMOUNT,payload:{itemId,value:1}})
     }
     else{
