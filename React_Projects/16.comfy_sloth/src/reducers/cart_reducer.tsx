@@ -52,8 +52,22 @@ export const cartReducer = (state: any, action: any) => {
                 })
             } 
         case ActionType.TOGGLE_CART_ITEM_AMOUNT:
+            const {value} = action.payload;
+
             return {
                 ...state,
+                cart:state.cart.map((elm:any)=>{
+                    if(elm.id == action.payload.itemId){
+                        elm.amount = elm.amount + value;
+                        if(elm.amount > elm.max){
+                            elm.amount = elm.max;
+                        }
+                        if(elm.amount < 1){
+                            elm.amount = 1;
+                        }
+                    }
+                    return elm;
+                })
             }
         case  ActionType.CLEAR_CART:
             return {
