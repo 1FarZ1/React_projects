@@ -16,6 +16,8 @@ export enum ActionType {
     UPDATE_FILTERS = 'UPDATE_FILTERS',
     FILTER_PRODUCTS = 'FILTER_PRODUCTS',
     CLEAR_FILTER =  "CLEAR_FILTER",
+    ADD_TO_CART = "ADD_TO_CART",
+    
 }
 
 
