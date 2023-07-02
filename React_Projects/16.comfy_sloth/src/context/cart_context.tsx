@@ -42,6 +42,14 @@ export const CartProvider = ({ children }:any) => {
   }
 
   const removeFromCart = (id:any)=>{
+    dispatch(
+      {
+        type:ActionType.REMOVE_CART_ITEM,
+        payload:{
+          itemId:id
+        }
+      }
+    )
 
 
   }
@@ -50,6 +58,7 @@ export const CartProvider = ({ children }:any) => {
   }
 
   const clearCart = ()=>{
+    dispatch({type:ActionType.CLEAR_CART});
   }
 
 

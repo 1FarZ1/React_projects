@@ -1,9 +1,11 @@
 /* eslint-disable no-case-declarations */
 
+import { ActionType } from "../actions";
+
 
 export const cartReducer = (state: any, action: any) => {
     switch(action.type){
-        case "ADD_TO_CART":
+        case ActionType.ADD_TO_CART:
             const {id,color,amount,product} = action.payload;
             const isExist = state.cart.find((i:any)=>i.id === id + color);
             if(isExist){
@@ -40,9 +42,29 @@ export const cartReducer = (state: any, action: any) => {
                     cart:[...state.cart,newItem],
     
                 }
+            }  
+        case ActionType.REMOVE_CART_ITEM:
+            const {itemId} = action.payload;
+            return {
+                ...state,
+                cart : state.cart.filter((elm:any)=>{
+                    return elm.id !== itemId;
+                })
+            } 
+        case ActionType.TOGGLE_CART_ITEM_AMOUNT:
+            return {
+                ...state,
             }
+        case  ActionType.CLEAR_CART:
+            return {
+                ...state,
+                cart:[],
 
-           
+            }
+        default:
+            return state;
+
     }
+
     }
     
