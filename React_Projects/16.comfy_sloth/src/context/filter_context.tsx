@@ -83,11 +83,10 @@ export const FilterProvider = ({ children }:any) => {
         getAllProducts();
     },[products])
     useEffect(()=>{
-        dispatch({type:ActionType.SORT_PRODUCTS,payload:state.sort});
-    },[products,state.sort])
-    useEffect(()=>{
         dispatch({type:ActionType.FILTER_PRODUCTS,payload:state.filters});
-    },[products,state.filters])
+        dispatch({type:ActionType.SORT_PRODUCTS,payload:state.sort});
+    },[products,state.sort,state.filters])
+
   return (
     <FilterContext.Provider value={
         {

@@ -14,6 +14,7 @@ export const filterReducer = (state: any, action: any) => {
                     max_price:maxPrice,
                     price:maxPrice,
                 },
+                products:[...action.payload],
                 filtred_products:[...action.payload],
             }
         case ActionType.UPDATE_SORT:            
@@ -47,6 +48,53 @@ export const filterReducer = (state: any, action: any) => {
                     [action.payload.name]:action.payload.value,
                 }
             }
+        case  ActionType.FILTER_PRODUCTS:
+            let Tempproducts =state.products;
+            const {text,company,category,color,price,shipping} = state.filters;
+
+            if(text){                
+                Tempproducts = Tempproducts.filter((product:any)=>{
+                    const productName:string = product.name.toLowerCase();
+                    return productName.indexOf(text.toLowerCase()) !== -1;
+                })
+            
+        }   
+        if(company != "all"){
+            
+            Tempproducts = Tempproducts.filter((product:any)=>{
+                return product.company === company;
+            })
+        }
+        if(category != "all"){
+            Tempproducts = Tempproducts.filter((product:any)=>{
+                return product.category === category;
+            })
+        }
+        if(color != "all"){
+            Tempproducts = Tempproducts.filter((product:any)=>{
+                return product.colors.find((c:string)=>c === color);
+            })
+        }
+        Tempproducts = Tempproducts.filter((product:any)=>{
+            return product.price <= price;
+        })
+        if(shipping){
+            Tempproducts = Tempproducts.filter((product:any)=>{
+                return product.shipping === true;
+            })
+        }
+
+
+
+            return {
+                ...state,
+                filtred_products:[...Tempproducts]
+            }
+
+
+                    
+
+
         case ActionType.CLEAR_FILTER:
             return {
                 ...state,
