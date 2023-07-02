@@ -14,11 +14,18 @@ const Filters = () => {
             min_price,
             max_price,
             price,
-            shipping
+            shipping,
+            
+
         },
+        products,
         updateFilters,
         clearFilters,
     } = useFilterContext();
+
+    const categories = getUniqueValues(products,"category");
+    const companies = getUniqueValues(products,"company");
+    const colors = getUniqueValues(products,"colors");
 
 
     return <Wrapper>

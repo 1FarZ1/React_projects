@@ -6,4 +6,10 @@ export const formatPrice = (price:number) => {
     }).format(price / 100)
 }
 
-export const getUniqueValues = () => {}
+export const getUniqueValues = (allProducts:any ,s:string) => {
+    let unique = allProducts.map((item:any) => item[s])
+    if (s === 'colors') {
+        unique = unique.flat()
+    }
+    return ['all', ...new Set(unique)]
+}

@@ -8,6 +8,7 @@ import { ActionType } from '../actions';
 
 const initialState = {
     filtred_products:[],
+    products:[],
     sort:"price-lowest",
     filters:{
         text:"",
@@ -23,6 +24,7 @@ const initialState = {
 
 const FilterContext = React.createContext({
     filtred_products:[],
+    products:[],
     sort:"price-lowest",
     updateSort : (e:any)=>{},
     updateFilters:(e:any)=>{},
@@ -60,6 +62,7 @@ export const FilterProvider = ({ children }:any) => {
 
     }
     const  clearFilters =()=>{
+        dispatch({type:ActionType.CLEAR_FILTER});
 
     }
     useEffect(()=>{
@@ -75,6 +78,7 @@ export const FilterProvider = ({ children }:any) => {
     <FilterContext.Provider value={
         {
             ...state,
+            products,
             updateSort:updateSortFun,
             updateFilters,
             clearFilters
