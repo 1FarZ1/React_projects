@@ -79,6 +79,24 @@ export const cartReducer = (state: any, action: any) => {
                 cart:[],
 
             }
+        case ActionType.COUNT_CART_TOTALS:
+            const {total_items,total_amount} = state.cart.reduce((total:any,cartItem:any)=>{
+                const {amount,price} = cartItem;
+                total.total_items += amount;
+                total.total_amount += price * amount;
+                return total;
+
+            },
+            {
+                total_items:0,
+                total_amount:0,
+            },
+            );
+            return {
+                ...state,
+                total_items,
+                total_amount,
+            }
         default:
             return state;
 
