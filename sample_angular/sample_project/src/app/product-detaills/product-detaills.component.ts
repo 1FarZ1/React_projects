@@ -1,32 +1,41 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ProductCard } from '../product-card';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-product-details',
-  template: `
-    <section class="product-details">
-      <h2>Product Details</h2>
-      <!-- <div *ngIf="product"> -->
-      <div>
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.description }}</p>
-        <p>Price: {{ product.price  }}</p>
-        <!-- Add more details as needed -->
-      </div>
-    </section>
-  `,
+  selector: 'app-product-detaills',
+  standalone: true,
+  imports: [CommonModule ],
+  templateUrl: './product-detaills.component.html',
   styleUrls: ['./product-detaills.component.css']
 })
 export class ProductDetailsComponent {
-  product: any; // Replace 'any' with your actual Product type/interface
+  productId!: string;
+  product: ProductCard | null = null;
+  loading: boolean = true;
 
-  // For demo purposes, you can populate the product data in ngOnInit
+  constructor(private route: ActivatedRoute, private http: HttpClient) {}
+
   ngOnInit(): void {
-    // Simulated product data
-    this.product = {
-      name: 'Product Name',
-      description: 'Product Description',
-      price: 99.99,
-      // Add more properties if needed
-    };
+    this.route.params.subscribe((params) => {
+      this.productId = params['id'];
+      this.fetchProductDetails(this.productId);
+    });
+  }
+
+  fetchProductDetails(productId: string): void {
+    this.http.get(`http://localhost:3000/api/products/detaills/${productId}`).subscribe(
+      (data: any) => {
+        console.log('Product Details:', data.product);
+        this.product = data.product as ProductCard;
+        this.loading = false; // Set loading to false when data is fetched
+      },
+      (error) => {
+        console.error('Error fetching product details:', error);
+        this.loading = false; // Set loading to false on error as well
+      }
+    );
   }
 }

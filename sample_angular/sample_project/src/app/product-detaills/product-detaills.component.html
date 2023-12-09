@@ -1,0 +1,24 @@
+<ng-container *ngIf="loading">
+  <div class="loading-spinner">
+    <div class="spinner"></div>
+  </div></ng-container>
+<section class="product-details" *ngIf="!loading && product">
+
+  <div class="product-card">
+    <h2>Product Details</h2>
+
+    <div class="product-container">
+      <div class="image-container">
+        <img [src]="product.image" alt="Product Photo">
+      </div>
+      <div class="details-container">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p>Price: {{ product.price }}</p>
+        <p>Category: {{ product.category }}</p>
+        <p>Rating: {{ product.rating }}</p>
+        <p>Stock: {{ product.stock }}</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -4,9 +4,9 @@ import { ProductCardComponent } from "../product-card/product-card.component";
 import { ProductCard } from '../product-card';
 import { FormsModule } from '@angular/forms';
 
-//import http
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { ProductDetailsComponent } from '../product-detaills/product-detaills.component';
 
 
 @Component({
@@ -45,8 +45,6 @@ export class HomeComponent {
 
 navigateToProductDetails(productId: number): void {
 
-
-
   console.log(productId)
   this.router.navigate(['/product', productId]);
 }
@@ -59,8 +57,6 @@ fetchData(): void {
     const totalItems = Number.parseInt(data.count); // Replace with the actual total count from API
     this.lastPage = Math.ceil(totalItems / this.limit);
 
-    // Generate page numbers for pagination
-    const visiblePages = 5; // Set the number of visible page buttons
     const currentPage = this.page;
     const pages: (number | '...')[] = [];
 
@@ -79,14 +75,14 @@ fetchData(): void {
 }
 
 changePage(page: number): void {
-  if (page < 1) return; // Prevent negative page numbers
+  if (page < 1) return;
   this.page = page;
   this.fetchData();
 }
 
 changeLimit(): void {
-  this.page = 0; // Reset page back to 0 when the limit changes
-  if(this.limit < 1) return; // Prevent negative limits
+  this.page = 0;
+  if(this.limit < 1) return;
 
   this.fetchData();
 }

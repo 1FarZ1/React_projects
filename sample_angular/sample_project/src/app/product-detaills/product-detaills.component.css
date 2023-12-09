@@ -1,14 +1,4 @@
-/* product-detaills.component.css */
 
-.product-details {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 20px;
-  margin: 10px;
-  width: 70%; /* Adjust the width as needed */
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-}
 
 .product-details h2 {
   font-size: 1.5em;
@@ -18,11 +8,101 @@
 
 .product-details p {
   margin-bottom: 10px;
+  line-height: 1.3
 }
 
 .product-details img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 150px;
   border-radius: 5px;
   margin-bottom: 10px;
+}
+
+/* Spinner styles */
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px; /* Set the desired height */
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Updated styles to arrange image and details side by side */
+.product-container {
+  display: flex;
+}
+
+.image-container {
+  flex: 0 0 40%; /* Set the desired width for the image */
+  margin-right: 20px; /* Add spacing between image and details */
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.details-container {
+  flex: 1;
+}
+
+.product-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Set height of the container to full viewport height */
+  background-color: #f0f0f0; /* Set a background color */
+}
+
+.product-card {
+  width: 60%;
+  height: 90%;
+  max-width: 600px; /* Maximum width for larger screens */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Apply shadow effect */
+  background-color: white;
+}
+
+.image-container {
+  width: 40%; /* Adjust the image width */
+  margin-right: 20px; /* Add spacing between image and details */
+  border-radius: 6px; /* Round the image corners */
+  overflow: hidden; /* Hide overflowing content */
+}
+
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px; /* Match the container's border-radius */
+}
+
+.details-container {
+  width: 60%; /* Adjust the details width */
+}
+
+/* Other styles for content */
+.product-card h2 {
+  margin-top: 0;
+  font-size: 24px;
+}
+
+.product-card p {
+  margin-bottom: 10px;
+  line-height: 1.6;
 }

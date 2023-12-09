@@ -1,5 +1,5 @@
 <section class="pagination">
-  <button class="primary" (click)="changePage(1)">First</button>
+  <button class="primary" (click)="changePage(0)">First</button>
   <button class="primary" (click)="changePage(page - 1)">Previous</button>
   <ng-container *ngFor="let pageNumber of pageNumbers">
     <button class="page-number" *ngIf="pageNumber !== '...'" [class.active]="pageNumber === page"
@@ -15,8 +15,8 @@
 </section>
 
 <section class="results">
-  <app-product-card *ngFor="let productCard of productCardList" [productCard]="productCard">
-    (click)="navigateToProductDetails(productCard.id)" <!-- Assuming productCard has an 'id' property -->
+  <app-product-card  *ngFor="let productCard of productCardList" [productCard]="productCard" (click)="navigateToProductDetails(productCard.id)" >
+     <!-- Assuming productCard has an 'id' property -->
 
   </app-product-card>
 </section>
