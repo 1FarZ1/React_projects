@@ -1,3 +1,13 @@
+<section>
+  <form class="search-form" >
+    <input name="searchQuery" type="text" placeholder="Search Your Tech" [(ngModel)]="searchQuery">
+    <button class="primary" type="button" (click)="search(
+    )">Search</button>
+  </form>
+</section>
+
+
+
 <section class="pagination">
   <button class="primary" (click)="changePage(0)">First</button>
   <button class="primary" (click)="changePage(page - 1)">Previous</button>

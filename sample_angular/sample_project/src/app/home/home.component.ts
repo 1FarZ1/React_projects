@@ -32,6 +32,8 @@ export class HomeComponent {
   limit: number = 10;
   page: number = 0;
 
+  searchQuery: string = '';
+
   lastPage: number = 1;
   pageNumbers: (number | '...')[] = [];
    productCardList: ProductCard[] = [];
@@ -50,8 +52,14 @@ navigateToProductDetails(productId: number): void {
 }
 
 
+search(
+): void {
+  this.page = 0;
+  this.fetchData();
+}
+
 fetchData(): void {
-  this.http.get(this.baseUrl + `?page=${this.page}&limit=${this.limit}` ).subscribe((data: any) => {
+  this.http.get(this.baseUrl + `?page=${this.page}&limit=${this.limit}&search=${this.searchQuery}` ).subscribe((data: any) => {
     console.log(data)
     this.productCardList = data.products;
     const totalItems = Number.parseInt(data.count); // Replace with the actual total count from API
