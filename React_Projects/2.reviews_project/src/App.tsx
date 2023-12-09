@@ -46,7 +46,7 @@ function App() {
       <section className='review'> 
       <div className="img-container">
       <img className='person-img' src={data[currentPerson].image} alt="" />
-    <span className='quote-icon'>
+    <span   className='quote-icon'>
       icon
     </span>
       </div>

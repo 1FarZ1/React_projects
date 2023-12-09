@@ -22,7 +22,7 @@ function App() {
   useEffect(
     ()=>{
         fetchData();
-    },[])
+    },[fetchData])
   return (
       
           <section className='jobs-center'>
