@@ -82,3 +82,21 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.search-section input[type="text"] {
+  padding: 10px;
+  border: solid 1px var(--primary-color);
+  border-radius: 8px;
+  margin-right: 4px;
+  display: inline-block;
+  width: 30%;
+}

@@ -1,0 +1,33 @@
+/* CSS for the navbar */
+.navbar {
+  padding: 10px 0;
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #8ADAB2;
+  font-weight: bold;
+}
+
+.nav-links li a:hover {
+  color: #ddd;
+}
+
+
+.navbar logo{
+  width: 100px;
+  height: 100px;
+  margin: 0 10px;
+  
+}

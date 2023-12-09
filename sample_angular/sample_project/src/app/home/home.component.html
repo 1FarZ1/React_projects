@@ -1,4 +1,4 @@
-<section>
+<section class="search-section" >
   <form class="search-form" >
     <input name="searchQuery" type="text" placeholder="Search Your Tech" [(ngModel)]="searchQuery">
     <button class="primary" type="button" (click)="search(
@@ -6,6 +6,17 @@
   </form>
 </section>
 
+
+
+<section class="limit-section">
+  <label for="limit">Change Limit:</label>
+  <input type="number" id="limit" [(ngModel)]="limit" (change)="changeLimit()" />
+</section>
+
+<section class="results">
+  <app-product-card  *ngFor="let productCard of productCardList" [productCard]="productCard" (click)="navigateToProductDetails(productCard.id)" >
+  </app-product-card>
+</section>
 
 
 <section class="pagination">
@@ -18,15 +29,4 @@
   </ng-container>
   <button class="primary" (click)="changePage(page + 1)">Next</button>
   <button class="primary" (click)="changePage(lastPage)">Last</button>
-</section>
-<section class="limit-section">
-  <label for="limit">Change Limit:</label>
-  <input type="number" id="limit" [(ngModel)]="limit" (change)="changeLimit()" />
-</section>
-
-<section class="results">
-  <app-product-card  *ngFor="let productCard of productCardList" [productCard]="productCard" (click)="navigateToProductDetails(productCard.id)" >
-     <!-- Assuming productCard has an 'id' property -->
-
-  </app-product-card>
 </section>

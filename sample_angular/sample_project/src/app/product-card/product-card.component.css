@@ -17,17 +17,17 @@
 .card-title h2 {
   margin: 0;
   font-size: 1.5rem;
-  color: #333;
+  color: white;
 }
 
 .card-body p {
-  color: #666;
+  color: white;
 }
 
 .card-footer p {
   margin-top: 8px;
   font-weight: bold;
-  color: #222;
+  color: rgb(255, 255, 255);
 }
 
 .card-image img {
