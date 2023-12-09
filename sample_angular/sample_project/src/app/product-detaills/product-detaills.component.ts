@@ -3,13 +3,14 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductCard } from '../product-card';
 import { CommonModule } from '@angular/common';
+import { LoadingWidgetComponent } from "../loading-widget/loading-widget.component";
 
 @Component({
-  selector: 'app-product-detaills',
-  standalone: true,
-  imports: [CommonModule ],
-  templateUrl: './product-detaills.component.html',
-  styleUrls: ['./product-detaills.component.css']
+    selector: 'app-product-detaills',
+    standalone: true,
+    templateUrl: './product-detaills.component.html',
+    styleUrls: ['./product-detaills.component.css'],
+    imports: [CommonModule, LoadingWidgetComponent]
 })
 export class ProductDetailsComponent {
   productId!: string;

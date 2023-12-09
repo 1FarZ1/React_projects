@@ -18,7 +18,6 @@ import { ProductDetailsComponent } from '../product-detaills/product-detaills.co
         CommonModule,
         ProductCardComponent,
         FormsModule,
-        RouterModule
     ]
 })
 

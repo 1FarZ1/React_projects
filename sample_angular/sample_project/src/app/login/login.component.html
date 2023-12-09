@@ -1,0 +1,18 @@
+
+
+    <div class="background">
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+    <form>
+        <h3>Login Here</h3>
+
+        <label for="email">Email</label>
+        <input type="email" name="email" placeholder="Email" id="email" [(ngModel)]="email" (change)="changeEmail()" >
+
+        <label for="password">Password</label>
+        <input type="password"  name="password" placeholder="Password" id="password" [(ngModel)]="password" (change)="changeEmail()">
+
+        <button (click)="login()">Login</button>
+
+    </form>
