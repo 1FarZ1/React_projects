@@ -15,4 +15,10 @@
 
         <button (click)="login()">Login</button>
 
+        <!-- <p>Don't have an account? <a routerLink="/register">Register</a></p> -->
+
+        <ng-container *ngIf="loading">
+            <app-loading></app-loading>
+        </ng-container>
+
     </form>

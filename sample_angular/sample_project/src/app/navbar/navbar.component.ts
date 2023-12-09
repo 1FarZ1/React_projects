@@ -14,10 +14,10 @@ import { Component } from '@angular/core';
   </div>
 
   <ul class="nav-links">
-    <li><a href="/Report">Report</a></li>
-    <li><a href="#">Cart</a></li>
-    <li><a href="#">Orders</a></li>
-    <li><a href="">Login</a></li>
+    <li><a href="/reports">Report</a></li>
+    <li><a href="/cart">Cart</a></li>
+    <li><a href="/orders">Orders</a></li>
+    <li><a href="/login">Login</a></li>
   </ul>
 </nav>
   `,

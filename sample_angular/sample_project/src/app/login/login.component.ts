@@ -2,13 +2,16 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { LoadingWidgetComponent } from '../loading-widget/loading-widget.component';
+import { Observable, catchError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    LoadingWidgetComponent
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -41,7 +44,10 @@ export class LoginComponent {
     }).subscribe((data: any) => {
       console.log(data)
       this.loading = false;
-    });
+    }, (error) => {
+      console.error('Error logging in:', error);
+      this.loading = false;
+     });
 
 
     } catch (error) {
@@ -49,4 +55,7 @@ export class LoginComponent {
       this.loading = false;
     }
   }
+
+
+
 }
